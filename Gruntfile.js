@@ -11,8 +11,20 @@ module.exports = function(grunt) {
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
       clean: {
         all: 'dist',
+        css: 'dist/css',
         html: 'dist/*.html',
         scripts: 'dist/scripts'
+      },
+      cssmin: {
+        css: {
+          files: [{
+            expand: true,
+            cwd: 'dist/css',
+            src: ['**/*.css', '!**/*.min.css'],
+            dest: 'dist/css',
+            ext: '.min.css'
+          }]
+        }
       },
       htmlmin: {
         html: {
@@ -25,6 +37,17 @@ module.exports = function(grunt) {
             cwd: 'src',
             src: '**/*.html',
             dest: 'dist'
+          }]
+        }
+      },
+      less: {
+        less: {
+          files: [{
+            expand: true,
+            cwd: 'src/less',
+            src: '**/*.less',
+            dest: 'dist/css',
+            ext: '.css'
           }]
         }
       },
@@ -53,6 +76,10 @@ module.exports = function(grunt) {
           files: ['src/**/*.html'],
           tasks: ['clean:html', 'htmlmin:html']
         },
+        less: {
+          files: ['src/less/**/*.less'],
+          tasks: ['clean:css', 'less:less', 'cssmin:css']
+        },
         srcipts: {
           files: ['src/scripts/**/*.js'],
           tasks: ['clean:scripts', 'uglify:scripts']
@@ -61,10 +88,12 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['clean:all', 'htmlmin:html', 'uglify:scripts']);
+  grunt.registerTask('default', ['clean:all', 'htmlmin:html', 'uglify:scripts', 'less:less', 'cssmin:css']);
 
 };
