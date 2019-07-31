@@ -1,12 +1,10 @@
 define(["jquery"], function($) {
   var self = {
-    config: {
-      cache: {
-        // empty
-      },
-      pending: "pending",
-      pending_wait_millis: 100
-    }
+    cache: {
+      // empty
+    },
+    pending: "pending",
+    pending_wait_millis: 100
   };
   var inst = $.extend(self, {
     __init: function() {
@@ -14,18 +12,18 @@ define(["jquery"], function($) {
     },
     get: function(url, callback) {
       console.log("http :: get", url, callback);
-      if (self.config.cache[url]) {
-        if (self.config.cache[url] === self.config.pending) {
+      if (self.cache[url]) {
+        if (self.cache[url] === self.pending) {
           setTimeout(function() {
             self.get(url, callback);
-          }, self.config.pending_wait_millis);
+          }, self.pending_wait_millis);
         } else if (callback) {
-          callback(self.config.cache[url]);
+          callback(self.cache[url]);
         }
       } else {
-        self.config.cache[url] = self.config.pending;
+        self.cache[url] = self.pending;
         $.get(url, function(response) {
-          self.config.cache[url] = response;
+          self.cache[url] = response;
           self.get(url, callback);
         });
       }

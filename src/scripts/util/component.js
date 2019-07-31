@@ -1,8 +1,6 @@
-define(["jquery", "util/http"], function($, http) {
+define(["jquery", "underscore", "util/http"], function($, _, http) {
   var self = {
-    config: {
-      selector: ".component"
-    }
+    selector: ".component"
   };
   var inst = $.extend(self, {
     __init: function() {
@@ -10,7 +8,7 @@ define(["jquery", "util/http"], function($, http) {
     },
     render_all: function(callback) {
       console.log("component :: render_all", callback);
-      var $components = $(self.config.selector);
+      var $components = $(self.selector);
       var count = $components.length;
       if (count) {
         $components.each(function() {
@@ -21,7 +19,7 @@ define(["jquery", "util/http"], function($, http) {
           }
           require(["component/" + data.component], function(controller) {
             http.get("/component/" + data.component + ".html", function(html) {
-              controller.__init($component, html);
+              controller.__init($component, _.template(html));
               count--;
               if (!count) {
                 self.render_all(callback);
