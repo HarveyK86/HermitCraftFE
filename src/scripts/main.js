@@ -5,7 +5,7 @@ requirejs.config({
     "bootstrap": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min"
   }
 });
-requirejs(["jquery", "bootstrap", "util/example"], function($, bootstrap, example) {
+requirejs(["jquery", "bootstrap", "util/component"], function($, bootstrap, component) {
   var self = {
     config: {
       // empty
@@ -13,8 +13,8 @@ requirejs(["jquery", "bootstrap", "util/example"], function($, bootstrap, exampl
   };
   $.extend(self, {
     __init: function() {
-      console.log("main.js :: __init");
-      example.sayHello();
+      console.log("main :: __init");
+      component.render_all();
     }
   }).__init();
 });
