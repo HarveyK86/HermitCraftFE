@@ -9,8 +9,12 @@ module.exports = function(grunt) {
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+      clean: {
+        all: 'dist',
+        scripts: 'dist/scripts'
+      },
       uglify: {
-        main: {
+        scripts: {
           options: {
             mangle: false,
             sourceMap: {
@@ -28,11 +32,19 @@ module.exports = function(grunt) {
             dest: 'dist'
           }]
         }
+      },
+      watch: {
+        srcipts: {
+          files: ['src/scripts/**/*.js'],
+          tasks: ['clean:scripts', 'uglify:scripts']
+        }
       }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['uglify:main']);
+  grunt.registerTask('default', ['clean:all', 'uglify:scripts']);
 
 };
