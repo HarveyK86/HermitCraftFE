@@ -1,9 +1,12 @@
 define(["jquery"], function($) {
   var self = {
+    name: "HermitArchive",
     pages: [{
-      name: "Page 1"
+      name: "Page 1",
+      slug: "page-1"
     }, {
-      name: "Page 2"
+      name: "Page 2",
+      slug: "page-2"
     }]
   };
   var inst = $.extend(self, {
