@@ -11,7 +11,22 @@ module.exports = function(grunt) {
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
       clean: {
         all: 'dist',
+        html: 'dist/*.html',
         scripts: 'dist/scripts'
+      },
+      htmlmin: {
+        html: {
+          options: {
+            removeComments: true,
+            collapseWhitespace: true
+          },
+          files: [{
+            expand: true,
+            cwd: 'src',
+            src: '**/*.html',
+            dest: 'dist'
+          }]
+        }
       },
       uglify: {
         scripts: {
@@ -34,6 +49,10 @@ module.exports = function(grunt) {
         }
       },
       watch: {
+        html: {
+          files: ['src/**/*.html'],
+          tasks: ['clean:html', 'htmlmin:html']
+        },
         srcipts: {
           files: ['src/scripts/**/*.js'],
           tasks: ['clean:scripts', 'uglify:scripts']
@@ -42,9 +61,10 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['clean:all', 'uglify:scripts']);
+  grunt.registerTask('default', ['clean:all', 'htmlmin:html', 'uglify:scripts']);
 
 };
