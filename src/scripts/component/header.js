@@ -1,4 +1,5 @@
-define(["jquery", "util/config", "util/hash"], function($, config, hash) {
+/* global $ */
+define(["util/config", "util/hash"], function(config, hash) {
   var self = {
     // empty
   };

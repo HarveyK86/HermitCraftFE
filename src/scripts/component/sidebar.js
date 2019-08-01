@@ -5,7 +5,7 @@ define([], function() {
   };
   return $.extend(self, {
     __init: function($component, template) {
-      console.log("padding :: __init", $component, template);
+      console.log("sidebar :: __init", $component, template);
       $component.replaceWith(template({
         // empty
       }));

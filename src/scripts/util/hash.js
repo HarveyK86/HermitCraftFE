@@ -1,4 +1,5 @@
-define(["jquery", "underscore"], function($, _) {
+/* global $, _ */
+define([], function() {
   var self = {
     listeners: []
   };
@@ -18,7 +19,7 @@ define(["jquery", "underscore"], function($, _) {
     },
     get: function(callback) {
       if (callback) {
-        callback(window.location.hash.substr(1));
+        callback(window.location.hash.substr(1).split("?")[0]);
       }
     }
   });

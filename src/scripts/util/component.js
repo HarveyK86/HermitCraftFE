@@ -1,4 +1,5 @@
-define(["jquery", "underscore", "util/http"], function($, _, http) {
+/* global $, _ */
+define(["util/http"], function(http) {
   var self = {
     class_name: "component"
   };

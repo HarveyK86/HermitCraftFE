@@ -1,4 +1,5 @@
-define(["jquery"], function($) {
+/* global $ */
+define([], function() {
   var self = {
     // empty
   };

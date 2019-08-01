@@ -1,4 +1,5 @@
-define(["jquery", "underscore", "util/component", "util/hash", "util/http"], function($, _, component, hash, http) {
+/* global $, _ */
+define(["util/component", "util/hash", "util/http"], function(component, hash, http) {
   var self = {
     selector: ".content"
   };
