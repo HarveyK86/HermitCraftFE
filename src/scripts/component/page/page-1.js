@@ -4,11 +4,11 @@ define([], function() {
     // empty
   };
   return $.extend(self, {
-    __init: function($content, template) {
-      console.log("page-1 :: __init", $content, template);
+    __init: function($content, template, query) {
+      console.log("page-1 :: __init", $content, template, query);
       $content.empty();
       $content.append(template({
-        // empty
+        active: query
       }));
     }
   });

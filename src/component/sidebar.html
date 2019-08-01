@@ -1,19 +1,9 @@
 <div class="sidebar">
   <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <li class="nav-item">
-      <a class="nav-link active" id="v-pills-tab-1-tab" data-toggle="pill" href="#v-pills-tab-1" role="tab" aria-controls="v-pills-tab-1" aria-selected="true">Tab 1 <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="v-pills-tab-2-tab" data-toggle="pill" href="#v-pills-tab-2" role="tab" aria-controls="v-pills-tab-2" aria-selected="false">Tab 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="v-pills-tab-3-tab" data-toggle="pill" href="#v-pills-tab-3" role="tab" aria-controls="v-pills-tab-3" aria-selected="false">Tab 3</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="v-pills-tab-4-tab" data-toggle="pill" href="#v-pills-tab-4" role="tab" aria-controls="v-pills-tab-4" aria-selected="false">Tab 4</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="v-pills-tab-5-tab" data-toggle="pill" href="#v-pills-tab-5" role="tab" aria-controls="v-pills-tab-5" aria-selected="false">Tab 5</a>
-    </li>
+    <% _.each(tabs, function(tab) { %>
+      <li class="nav-item">
+        <a class="nav-link<% if (tab.slug === active) { %> active<% } %>" id="v-pills-<%= tab.slug %>-tab" data-slug="<%= tab.slug %>" data-toggle="pill" href="#v-pills-<%= tab.slug %>" role="tab" aria-controls="v-pills-<%= tab.slug %>" aria-selected="true"><%= tab.name %><% if (tab.slug === active) { %> <span class="sr-only">(current)</span><% } %></a>
+      </li>
+    <% }); %>
   </ul>
 </div>

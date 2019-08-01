@@ -1,5 +1,5 @@
 /* global $, _ */
-define(["util/component", "util/hash", "util/http"], function(component, hash, http) {
+define(["util/component", "util/config", "util/route", "util/http"], function(component, config, route, http) {
   var self = {
     selector: ".content"
   };
@@ -10,13 +10,25 @@ define(["util/component", "util/hash", "util/http"], function(component, hash, h
       $component.append(template({
         // empty
       }));
-      hash.register_listener(function(hash) {
-        if (!$("link#" + hash).length) {
-          $("head").append('<link id="' + hash + '" href="/css/component/page/' + hash + '.min.css" rel="stylesheet">');
+      route.register_any_listener(function(hash, query) {
+        var active_page = config.pages[0];
+        for (var i = 0; i < config.pages.length; i++) {
+          if (config.pages[i].slug === hash) {
+            active_page = config.pages[i];
+          }
         }
-        require(["component/page/" + hash], function(controller) {
-          http.get("/component/page/" + hash + ".html", function(html) {
-            controller.__init($(self.selector), _.template(html));
+        var active_tab = active_page.tabs[0];
+        for (var i = 0; i < active_page.tabs.length; i++) {
+          if (active_page.tabs[i].slug === query) {
+            active_tab = active_page.tabs[i];
+          }
+        }
+        if (!$("link#" + active_page.slug).length) {
+          $("head").append('<link id="' + active_page.slug + '" href="/css/component/page/' + active_page.slug + '.min.css" rel="stylesheet">');
+        }
+        require(["component/page/" + active_page.slug], function(controller) {
+          http.get("/component/page/" + active_page.slug + ".html", function(html) {
+            controller.__init($(self.selector), _.template(html), active_tab.slug);
             component.render_all();
           });
         });

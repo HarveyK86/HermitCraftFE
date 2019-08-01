@@ -2,28 +2,10 @@
   <div class="card-body">
     <h1>Page 1</h1>
     <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-tab-1" role="tabpanel" aria-labelledby="v-pills-tab-1-tab">
+      <div class="tab-pane fade<% if(active === 'tab-1') { %> show active<% } %>" id="v-pills-tab-1" role="tabpanel" aria-labelledby="v-pills-tab-1-tab">
         <div class="component" data-component="padding"></div>
       </div>
-      <div class="tab-pane fade" id="v-pills-tab-2" role="tabpanel" aria-labelledby="v-pills-tab-2-tab">
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-tab-3" role="tabpanel" aria-labelledby="v-pills-tab-3-tab">
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-tab-4" role="tabpanel" aria-labelledby="v-pills-tab-4-tab">
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-      </div>
-      <div class="tab-pane fade" id="v-pills-tab-5" role="tabpanel" aria-labelledby="v-pills-tab-5-tab">
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
-        <div class="component" data-component="padding"></div>
+      <div class="tab-pane fade<% if(active === 'tab-2') { %> show active<% } %>" id="v-pills-tab-2" role="tabpanel" aria-labelledby="v-pills-tab-2-tab">
         <div class="component" data-component="padding"></div>
         <div class="component" data-component="padding"></div>
       </div>
