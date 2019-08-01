@@ -2,28 +2,38 @@
 define([], function() {
   var self = {
     name: "HermitArchive",
+    seo: "HermitArchive: The HermitCraft Archive",
     pages: [{
-      name: "Page 1",
-      slug: "page-1",
+      name: "Videos",
+      slug: "videos",
+      seo: "Latest HermitCraft: Season 6 Videos",
+      icon: "play-circle",
       tabs: [{
-        name: "Tab 1",
-        slug: "tab-1"
+        name: "Mumbo Jumbo",
+        slug: "mumbo-jumbo",
+        seo: "Latest Mumbo Jumbo Videos"
       }, {
-        name: "Tab 2",
-        slug: "tab-2"
+        name: "Grian",
+        slug: "grian",
+        seo: "Latest Grian Videos"
       }]
     }, {
-      name: "Page 2",
-      slug: "page-2",
+      name: "Hermits",
+      slug: "hermits",
+      icon: "user",
+      seo: "Hermit Biographies and Information",
       tabs: [{
-        name: "Tab 3",
-        slug: "tab-3"
+        name: "Xisuma",
+        slug: "xisuma",
+        seo: "All About Xisuma"
       }, {
-        name: "Tab 4",
-        slug: "tab-4"
+        name: "Impulse",
+        slug: "impulse",
+        seo: "All About Impulse"
       }, {
-        name: "Tab 5",
-        slug: "tab-5"
+        name: "Iskall",
+        slug: "iskall",
+        seo: "All About Iskall"
       }]
     }]
   };

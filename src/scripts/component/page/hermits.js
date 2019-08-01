@@ -4,11 +4,12 @@ define([], function() {
     // empty
   };
   return $.extend(self, {
-    __init: function($content, template, query) {
-      console.log("page-2 :: __init", $content, template, query);
+    __init: function($content, template, page, tab) {
+      console.log("hermits :: __init", $content, template, page, tab);
       $content.empty();
       $content.append(template({
-        active: query
+        page: page,
+        active: tab
       }));
     }
   });

@@ -2,7 +2,7 @@
   <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <% _.each(tabs, function(tab) { %>
       <li class="nav-item">
-        <a class="nav-link<% if (tab.slug === active) { %> active<% } %>" id="v-pills-<%= tab.slug %>-tab" data-slug="<%= tab.slug %>" data-toggle="pill" href="#v-pills-<%= tab.slug %>" role="tab" aria-controls="v-pills-<%= tab.slug %>" aria-selected="true"><%= tab.name %><% if (tab.slug === active) { %> <span class="sr-only">(current)</span><% } %></a>
+        <a class="nav-link<% if (tab.slug === active.slug) { %> active<% } %>" id="v-pills-<%= tab.slug %>-tab" data-slug="<%= tab.slug %>" data-toggle="pill" href="#v-pills-<%= tab.slug %>" role="tab" aria-controls="v-pills-<%= tab.slug %>" aria-selected="true"><%= tab.name %><% if (tab.slug === active.slug) { %> <span class="sr-only">(current)</span><i class="fa fa-arrow-right pull-right"></i><% } %></a>
       </li>
     <% }); %>
   </ul>

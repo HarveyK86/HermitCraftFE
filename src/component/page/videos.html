@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= page.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= page.seo %></h6>
+    <div class="tab-content" id="v-pills-tabContent">
+      <% _.each(page.tabs, function(tab) { %>
+        <div class="tab-pane fade<% if (tab.slug === active.slug) { %> show active<% } %>" id="v-pills-<%= tab.slug %>" role="tabpanel" aria-labelledby="v-pills-<%= tab.slug %>-tab">
+          <%= tab.seo %>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</div>

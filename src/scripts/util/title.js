@@ -1,11 +1,11 @@
 /* global $ */
 define(["util/config", "util/route"], function(config, route) {
   var self = {
-    // empty
+    delimiter: " | "
   };
-  return $.extend(self, {
-    __init: function($component, template) {
-      console.log("sidebar :: __init", $component, template);
+  var inst = $.extend(self, {
+    __init: function() {
+      console.log("title :: __init");
       route.register_any_listener(function(hash, query) {
         var active_page = config.pages[0];
         for (var i = 0; i < config.pages.length; i++) {
@@ -19,19 +19,10 @@ define(["util/config", "util/route"], function(config, route) {
             active_tab = active_page.tabs[i];
           }
         }
-        $component.empty();
-        $component.append(template({
-          tabs: active_page.tabs,
-          active: active_tab
-        }));
-        $component.find(".nav-link").each(function() {
-          var $nav_link = $(this);
-          var data = $nav_link.data();
-          $nav_link.click(function() {
-            route.set_query(data.slug);
-          });
-        });
+        $(document).attr("title", active_tab.seo + self.delimiter + active_page.seo + self.delimiter + config.seo);
       });
     }
   });
+  inst.__init();
+  return inst;
 });

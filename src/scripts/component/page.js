@@ -1,5 +1,5 @@
 /* global $, _ */
-define(["util/component", "util/config", "util/route", "util/http"], function(component, config, route, http) {
+define(["util/component", "util/config", "util/http", "util/route"], function(component, config, http, route) {
   var self = {
     selector: ".content"
   };
@@ -28,7 +28,7 @@ define(["util/component", "util/config", "util/route", "util/http"], function(co
         }
         require(["component/page/" + active_page.slug], function(controller) {
           http.get("/component/page/" + active_page.slug + ".html", function(html) {
-            controller.__init($(self.selector), _.template(html), active_tab.slug);
+            controller.__init($(self.selector), _.template(html), active_page, active_tab);
             component.render_all();
           });
         });

@@ -17,7 +17,7 @@ define(["util/config", "util/route"], function(config, route) {
         $component.append(template({
           name: config.name,
           pages: config.pages,
-          active: active_page.slug
+          active: active_page
         }));
       });
     }

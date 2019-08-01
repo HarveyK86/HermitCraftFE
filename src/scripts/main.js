@@ -28,7 +28,7 @@ requirejs.config({
   }
 });
 require(["bootstrap", "jquery", "underscore"], function() {
-  require(["util/component"], function(component) {
+  require(["util/component", "util/title"], function(component, title) {
     var self = {
       config: {
         // empty
