@@ -3,7 +3,7 @@ define([], function() {
   var self = {
     name: "HermitArchive",
     seo: "HermitArchive: The HermitCraft Archive",
-    api_key: "AIzaSyBuupMLbkj3JDhWXKRMV0MoWM_je3Ddx2Y",
+    api_key: "INSERT API KEY HERE",
     pages: [{
       name: "Videos",
       icon: "play-circle",
