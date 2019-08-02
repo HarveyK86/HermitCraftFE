@@ -1,4 +1,4 @@
-/* global $ */
+/* global $, _ */
 define(["util/config", "util/route"], function(config, route) {
   var self = {
     delimiter: " | "
@@ -13,13 +13,16 @@ define(["util/config", "util/route"], function(config, route) {
             active_page = config.pages[i];
           }
         }
-        var active_tab = active_page.tabs[0];
-        for (var i = 0; i < active_page.tabs.length; i++) {
-          if (active_page.tabs[i].slug === query) {
-            active_tab = active_page.tabs[i];
+        var active_hermit = config.hermits[0];
+        for (var i = 0; i < config.hermits.length; i++) {
+          if (config.hermits[i].slug === query) {
+            active_hermit = config.hermits[i];
           }
         }
-        $(document).attr("title", active_tab.seo + self.delimiter + active_page.seo + self.delimiter + config.seo);
+        var seo_template = _.template(active_page.hermit_seo);
+        $(document).attr("title", seo_template({
+          hermit: active_hermit
+        }) + self.delimiter + active_page.seo + self.delimiter + config.seo);
       });
     }
   });

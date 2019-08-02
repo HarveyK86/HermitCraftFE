@@ -3,38 +3,40 @@ define([], function() {
   var self = {
     name: "HermitArchive",
     seo: "HermitArchive: The HermitCraft Archive",
+    api_key: "AIzaSyBuupMLbkj3JDhWXKRMV0MoWM_je3Ddx2Y",
     pages: [{
       name: "Videos",
+      icon: "play-circle",
       slug: "videos",
       seo: "Latest HermitCraft: Season 6 Videos",
-      icon: "play-circle",
-      tabs: [{
-        name: "Mumbo Jumbo",
-        slug: "mumbo-jumbo",
-        seo: "Latest Mumbo Jumbo Videos"
-      }, {
-        name: "Grian",
-        slug: "grian",
-        seo: "Latest Grian Videos"
-      }]
+      hermit_seo: "Lastest <%= hermit.name %> Videos"
     }, {
       name: "Hermits",
       slug: "hermits",
       icon: "user",
       seo: "Hermit Biographies and Information",
-      tabs: [{
-        name: "Xisuma",
-        slug: "xisuma",
-        seo: "All About Xisuma"
-      }, {
-        name: "Impulse",
-        slug: "impulse",
-        seo: "All About Impulse"
-      }, {
-        name: "Iskall",
-        slug: "iskall",
-        seo: "All About Iskall"
-      }]
+      hermit_seo: "All About <%= hermit.name %>"
+    }],
+    hermits: [{
+      name: "Mumbo Jumbo",
+      slug: "mumbo-jumbo",
+      username: "ThatMumboJumbo"
+    }, {
+      name: "Grian",
+      slug: "grian",
+      username: "Xelqua"
+    }, {
+      name: "Xisuma",
+      slug: "xisumavoid",
+      username: "xisumavoid"
+    }, {
+      name: "Impulse",
+      slug: "impulsesv",
+      username: "impulseSV"
+    }, {
+      name: "Iskall",
+      slug: "iskall85",
+      username: "AhlViktor"
     }]
   };
   var inst = $.extend(self, {

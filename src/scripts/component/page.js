@@ -17,10 +17,10 @@ define(["util/component", "util/config", "util/http", "util/route"], function(co
             active_page = config.pages[i];
           }
         }
-        var active_tab = active_page.tabs[0];
-        for (var i = 0; i < active_page.tabs.length; i++) {
-          if (active_page.tabs[i].slug === query) {
-            active_tab = active_page.tabs[i];
+        var active_hermit = config.hermits[0];
+        for (var i = 0; i < config.hermits.length; i++) {
+          if (config.hermits[i].slug === query) {
+            active_hermit = config.hermits[i];
           }
         }
         if (!$("link#" + active_page.slug).length) {
@@ -28,7 +28,7 @@ define(["util/component", "util/config", "util/http", "util/route"], function(co
         }
         require(["component/page/" + active_page.slug], function(controller) {
           http.get("/component/page/" + active_page.slug + ".html", function(html) {
-            controller.__init($(self.selector), _.template(html), active_page, active_tab);
+            controller.__init($(self.selector), _.template(html), active_page, active_hermit);
             component.render_all();
           });
         });
